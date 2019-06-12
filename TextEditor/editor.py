@@ -10,6 +10,7 @@ class Editor:
         self._xscroll = ttk.Scrollbar(self._frame, orient='horizontal', command=self._textbox.xview)
         self._textbox.configure(yscrollcommand=self._yscroll.set, xscrollcommand=self._xscroll.set)
         self._textbox.bind('<Tab>', self._tab)
+        self._textbox.bind('<Control-a>', self._selectall)
         self._tab_spaces = 4
 
     def render(self, column, row, padding, columnspan=1, rowspan=1):
@@ -41,6 +42,16 @@ class Editor:
 
     def _tab(self, *args):
         self._textbox.insert(tk.INSERT, ' ' * self._tab_spaces)
+        return 'break'
+    
+    def _selectall(self, *args):
+        self._textbox.tag_add(tk.SEL, '1.0', tk.END)
+        self._textbox.mark_set(tk.INSERT, '1.0')
+        self._textbox.see(tk.INSERT)
+        return 'break'
+
+    def clear_text(self, *args):
+        self.set_text('')
         return 'break'
 
     def set_text(self, text):

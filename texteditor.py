@@ -31,4 +31,8 @@ if __name__ == '__main__':
     menubar.init_menu()
     menubar.set_font('TkSmallCaptionFont')
 
+    root.bind('<Control-n>', fileman.newfile)
+    root.bind('<Control-o>', fileman.openfile)
+    root.bind('<Control-s>', fileman.savefile)
+
     root.mainloop()

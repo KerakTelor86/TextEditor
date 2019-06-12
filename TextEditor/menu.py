@@ -19,7 +19,7 @@ class Menu:
         # self._options = tk.Menu(self._menu)
         # self._menu.add_cascade(label='Options', menu=self._options)
 
-        # self._file.add_command(label='New')
+        self._file.add_command(label='New', command=self._fileio.newfile)
         self._file.add_command(label='Open...', command=self._fileio.openfile)
         self._file.add_command(label='Save...', command=self._fileio.savefile)
 
